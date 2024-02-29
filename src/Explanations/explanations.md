@@ -14,3 +14,7 @@
 - Store
 - Actions
 - Reducers
+
+# Manual
+
+- Create a Store.
