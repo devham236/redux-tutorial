@@ -8,3 +8,9 @@
 - Wie update ich die States in den Komponenten?
 - Wie kann ich neue States erstellen?
 - Wie sieht das mit custom Hooks aus?
+
+# Concepts
+
+- Store
+- Actions
+- Reducers
