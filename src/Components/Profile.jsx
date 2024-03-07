@@ -7,11 +7,11 @@ const Profile = () => {
 
   console.log(darkMode)
   return (
-    <div className={`${darkMode ? "bg-slate-400" : "bg-slate-900"}`}>
-      <h1>Profile Page</h1>
-      <p>Name: {user.name}</p>
-      <p>Age: {user.age}</p>
-      <p>E-Mail: {user.email}</p>
+    <div className={`${darkMode ? "bg-slate-900" : "bg-slate-400"}`}>
+      <h1 className={`${darkMode && "text-white"}`}>Profile Page</h1>
+      <p className={`${darkMode && "text-white"}`}>Name: {user.name}</p>
+      <p className={`${darkMode && "text-white"}`}>Age: {user.age}</p>
+      <p className={`${darkMode && "text-white"}`}>E-Mail: {user.email}</p>
     </div>
   )
 }
