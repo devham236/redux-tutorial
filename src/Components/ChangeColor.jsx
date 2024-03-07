@@ -1,10 +1,13 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { changeColor } from "../features/theme"
 
 const ChangeColor = () => {
   const [color, setColor] = useState("")
+  const theme = useSelector((state) => state.theme.value)
   const dispatch = useDispatch()
+
+  console.log(theme)
   return (
     <div>
       <input
