@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import "./App.css"
 import { useDispatch, useSelector } from "react-redux"
-import { addUser } from "./Features/users"
+import { addUser, deleteUser } from "./Features/users"
 
 const App = () => {
   const usersList = useSelector((state) => state.users.value)
@@ -51,7 +51,9 @@ const App = () => {
             <h1>{user.username}</h1>
             <input type="text" placeholder="New Username..." />
             <button>Update Username</button>
-            <button>Delete User</button>
+            <button onClick={() => dispatch(deleteUser(user.id))}>
+              Delete User
+            </button>
           </div>
         ))}
       </div>
