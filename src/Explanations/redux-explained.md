@@ -15,3 +15,7 @@
 # useDispatch
 
 - "Manipulate" bzw. states ändern/updaten.
+
+# Anleitung
+
+- Store erstellen (am besten in der "main" Datei)
