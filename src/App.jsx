@@ -7,7 +7,6 @@ const App = () => {
   const usersList = useSelector((state) => state.users.value)
   const dispatch = useDispatch()
   const [newUser, setNewUser] = useState({
-    id: 0,
     name: "",
     username: "",
   })
@@ -37,13 +36,22 @@ const App = () => {
           name="username"
           onChange={(e) => changeState(e)}
         />
-        <button onClick={() => dispatch(addUser())}>Add User</button>
+        <button
+          onClick={() =>
+            dispatch(addUser({ id: usersList.length + 1, ...newUser }))
+          }
+        >
+          Add User
+        </button>
       </div>
       <div className="displayUsers">
         {usersList.map((user) => (
           <div key={user.id}>
             <h1>{user.name}</h1>
             <h1>{user.username}</h1>
+            <input type="text" placeholder="New Username..." />
+            <button>Update Username</button>
+            <button>Delete User</button>
           </div>
         ))}
       </div>
