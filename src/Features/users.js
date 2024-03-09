@@ -14,9 +14,18 @@ const userSlice = createSlice({
       )
       state.value = filteredArray
     },
+    updateUser: (state, action) => {
+      const matchingUser = state.value.find(
+        (user) => user.id === action.payload.id
+      )
+      state.value[matchingUser.id - 1] = {
+        ...matchingUser,
+        username: action.payload.value,
+      }
+    },
   },
 })
 
-export const { addUser, deleteUser } = userSlice.actions
+export const { addUser, deleteUser, updateUser } = userSlice.actions
 
 export default userSlice.reducer
