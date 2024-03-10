@@ -19,3 +19,4 @@
 # Anleitung
 
 - Store erstellen (am besten in der "main" Datei)
+- Slices in einer seperaten Datei erstellen
