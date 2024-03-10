@@ -39,7 +39,12 @@ const App = () => {
         />
         <button
           onClick={() =>
-            dispatch(addUser({ id: usersList.length + 1, ...newUser }))
+            dispatch(
+              addUser({
+                id: usersList[usersList.length - 1].id + 1,
+                ...newUser,
+              })
+            )
           }
         >
           Add User
