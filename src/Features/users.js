@@ -4,6 +4,7 @@ import { UsersData } from "../Utils/fakeData"
 const userSlice = createSlice({
   name: "users",
   initialState: { value: UsersData },
+  // Jeder key in der reducers property ist ein action type
   reducers: {
     addUser: (state, action) => {
       state.value.push(action.payload)
