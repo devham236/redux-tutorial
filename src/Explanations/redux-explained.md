@@ -20,3 +20,6 @@
 
 - Store erstellen (am besten in der "main" Datei)
 - Slices in einer seperaten Datei erstellen
+- Den reducer und die actions vom slice exportieren
+- Reducer da importieren wo der Store liegt
+- Actions in die Komponenten importieren, wo sie gebraucht werden.
