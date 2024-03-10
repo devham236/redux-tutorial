@@ -30,6 +30,7 @@ const userSlice = createSlice({
   },
 })
 
+// Die reducer functions werden in der actions property gespeichert
 export const { addUser, deleteUser, updateUser } = userSlice.actions
 
 export default userSlice.reducer
