@@ -6,15 +6,18 @@ const userSlice = createSlice({
   initialState: { value: UsersData },
   // Jeder key in der reducers property ist ein action type
   reducers: {
+    // reducer function
     addUser: (state, action) => {
       state.value.push(action.payload)
     },
+    // reducer function
     deleteUser: (state, action) => {
       const filteredArray = state.value.filter(
         (user) => user.id !== action.payload
       )
       state.value = filteredArray
     },
+    // reducer function
     updateUser: (state, action) => {
       const matchingUser = state.value.find(
         (user) => user.id === action.payload.id
