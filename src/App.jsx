@@ -1,6 +1,9 @@
 import React from "react"
+import getRecipes from "./Utils/getRecipes"
+const data = await getRecipes()
 
 const App = () => {
+  console.log(data)
   return (
     <div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim odit, vero
