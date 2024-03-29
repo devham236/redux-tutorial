@@ -1,6 +1,10 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
 const App = () => {
+  const recipes = useSelector((state) => state.recipes.value)
+
+  console.log(recipes)
   return (
     <div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim odit, vero
