@@ -1,6 +1,6 @@
 const getRecipes = async () => {
   try {
-    const res = await fetch("http://localhost:5173/data.json")
+    const res = await fetch("/data.json")
     const data = await res.json()
     return data.recipes
   } catch (error) {
