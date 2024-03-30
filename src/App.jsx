@@ -1,12 +1,9 @@
 import React from "react"
-import { useSelector } from "react-redux"
-import RecipeDiv from "./Components/RecipeDiv"
 import { Link, Route, Routes } from "react-router-dom"
 import Favorites from "./Pages/Favorites"
+import Recipes from "./Pages/Recipes"
 
 const App = () => {
-  const recipes = useSelector((state) => state.recipes.value)
-  console.log(recipes)
   return (
     <div>
       <div style={{ display: "flex" }}>
@@ -18,16 +15,7 @@ const App = () => {
         </Link>
       </div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              {recipes.slice(0, 5).map((recipe) => (
-                <RecipeDiv key={recipe.id} recipe={recipe} />
-              ))}
-            </div>
-          }
-        ></Route>
+        <Route path="/" element={<Recipes />}></Route>
         <Route path="/favorites" element={<Favorites />}></Route>
       </Routes>
     </div>
