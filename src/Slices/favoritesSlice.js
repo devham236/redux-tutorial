@@ -5,7 +5,6 @@ const favoritesSlice = createSlice({
   initialState: { value: [] },
   reducers: {
     addRecipe: (state, action) => {
-      console.log("added")
       state.value.push(action.payload)
     },
     removeRecipe: (state, action) => {
