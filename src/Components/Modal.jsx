@@ -12,6 +12,11 @@ const Modal = ({ recipe }) => {
       }}
     >
       <h1>{recipe.name}</h1>
+      <ul>
+        {recipe.ingredients.map((i, index) => (
+          <li key={index}>{i}</li>
+        ))}
+      </ul>
       <button onClick={() => dispatch(hideModal())}>Close Modal</button>
     </div>
   )
