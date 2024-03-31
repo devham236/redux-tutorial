@@ -1,14 +1,13 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addRecipe, removeRecipe } from "../Slices/favoritesSlice"
+import { showModal } from "../Slices/modalSlice"
 
 const RecipeDiv = ({ recipe }) => {
   const favorites = useSelector((state) => state.favorites.value)
   const dispatch = useDispatch()
 
   const isInFavorites = favorites.includes(recipe)
-
-  console.log(isInFavorites)
 
   return (
     <div
@@ -27,7 +26,7 @@ const RecipeDiv = ({ recipe }) => {
         <p style={{ margin: "0" }}>{recipe.prepTimeMinutes}min</p>
       </div>
       <div>
-        <button>Details</button>
+        <button onClick={() => dispatch(showModal({ recipe }))}>Details</button>
         {isInFavorites ? (
           <button onClick={() => dispatch(removeRecipe(recipe))}>
             Remove as Favourite
