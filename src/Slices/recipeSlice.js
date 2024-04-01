@@ -8,7 +8,8 @@ const recipeSlice = createSlice({
   initialState: { value: recipes.slice(0, 5) },
   reducers: {
     toggleRecipes: (state, action) => {
-      state.value = recipes.slice(0, action.payload)
+      const alteredArray = recipes.slice(0, action.payload)
+      state.value = alteredArray
     },
   },
 })

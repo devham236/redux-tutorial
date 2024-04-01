@@ -7,7 +7,7 @@ import Modal from "./Components/Modal"
 
 const App = () => {
   const modal = useSelector((state) => state.modal.value)
-  console.log(modal)
+
   return (
     <>
       <div>
