@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <>
-      <div>
+      <div style={{ position: "relative" }}>
         <div style={{ display: "flex" }}>
           <Link to={"/"} style={{ marginRight: "1rem" }}>
             <h1>Recipes</h1>
@@ -24,7 +24,11 @@ const App = () => {
           <Route path="/favorites" element={<Favorites />}></Route>
         </Routes>
       </div>
-      {modal && <Modal recipe={modal} />}
+      {modal && (
+        <div>
+          <Modal recipe={modal} />
+        </div>
+      )}
     </>
   )
 }
