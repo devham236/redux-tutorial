@@ -24,11 +24,7 @@ const App = () => {
           <Route path="/favorites" element={<Favorites />}></Route>
         </Routes>
       </div>
-      {modal && (
-        <div>
-          <Modal recipe={modal} />
-        </div>
-      )}
+      {modal && <Modal recipe={modal} />}
     </>
   )
 }
