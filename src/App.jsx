@@ -1,13 +1,18 @@
 import React from "react"
 import { Link, Route, Routes } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Favorites from "./Pages/Favorites"
 import Recipes from "./Pages/Recipes"
 import Modal from "./Components/Modal"
 import Checkout from "./Pages/Checkout"
+import { toggleState } from "./Slices/onlyEasySlice"
 
 const App = () => {
   const modal = useSelector((state) => state.modal.value)
+  const onlyEasy = useSelector((state) => state.onlyEasy.value)
+  const dispatch = useDispatch()
+
+  console.log(onlyEasy)
 
   return (
     <>
@@ -24,7 +29,12 @@ const App = () => {
           </Link>
           <div style={{ display: "flex", alignItems: "center" }}>
             <label htmlFor="difficulty">only show easy recipes</label>
-            <input type="checkbox" name="difficulty" id="difficulty" />
+            <input
+              type="checkbox"
+              name="difficulty"
+              id="difficulty"
+              onClick={() => dispatch(toggleState())}
+            />
           </div>
         </div>
         <Routes>
