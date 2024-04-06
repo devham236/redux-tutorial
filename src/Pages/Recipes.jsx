@@ -6,6 +6,8 @@ import { toggleRecipes } from "../Slices/recipeSlice"
 const Recipes = () => {
   const dispatch = useDispatch()
   const recipes = useSelector((state) => state.recipes.value)
+  const easyRecipes = useSelector((state) => state.easyRecipes.value)
+  console.log(easyRecipes)
   return (
     <div>
       {recipes.map((recipe) => (
