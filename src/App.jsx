@@ -19,9 +19,13 @@ const App = () => {
           <Link to={"/favorites"} style={{ marginRight: "1rem" }}>
             <h1>Favorites</h1>
           </Link>
-          <Link to={"/checkout"}>
+          <Link to={"/checkout"} style={{ marginRight: "1rem" }}>
             <h1>Checkout</h1>
           </Link>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label htmlFor="difficulty">only show easy recipes</label>
+            <input type="checkbox" name="difficulty" id="difficulty" />
+          </div>
         </div>
         <Routes>
           <Route path="/" element={<Recipes />}></Route>
