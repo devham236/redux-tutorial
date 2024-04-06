@@ -10,6 +10,7 @@ import recipesReducer from "./Slices/recipeSlice.js"
 import favoritesReducer from "./Slices/favoritesSlice.js"
 import modalReducer from "./Slices/modalSlice.js"
 import checkoutReducer from "./Slices/checkoutSlice.js"
+import easyRecipesReducer from "./Slices/easyRecipes.js"
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     favorites: favoritesReducer,
     modal: modalReducer,
     checkout: checkoutReducer,
+    easyRecipes: easyRecipesReducer,
   },
 })
 
