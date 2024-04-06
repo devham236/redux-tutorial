@@ -2,6 +2,7 @@ import React from "react"
 import RecipeDiv from "../Components/RecipeDiv"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleRecipes } from "../Slices/recipeSlice"
+import { toggleState } from "../Slices/onlyEasySlice"
 
 const Recipes = () => {
   const dispatch = useDispatch()
@@ -13,6 +14,17 @@ const Recipes = () => {
 
   return (
     <div>
+      <div
+        style={{ display: "flex", alignItems: "center", marginBottom: "2rem" }}
+      >
+        <label htmlFor="difficulty">only show easy recipes</label>
+        <input
+          type="checkbox"
+          name="difficulty"
+          id="difficulty"
+          onClick={() => dispatch(toggleState())}
+        />
+      </div>
       {recipesArray.map((recipe) => (
         <RecipeDiv key={recipe.id} recipe={recipe} />
       ))}
