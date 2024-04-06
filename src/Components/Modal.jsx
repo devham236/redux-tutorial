@@ -22,9 +22,6 @@ const Modal = ({ recipe }) => {
         ))}
       </ul>
       <button onClick={() => dispatch(hideModal())}>Close Modal</button>
-      <button onClick={() => dispatch(addToCheckout(recipe))}>
-        Add to Checkout
-      </button>
     </div>
   )
 }

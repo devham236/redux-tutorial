@@ -1,13 +1,13 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addRecipe, removeRecipe } from "../Slices/favoritesSlice"
 import { showModal } from "../Slices/modalSlice"
+import { addToCheckout, removeFromCheckout } from "../Slices/checkoutSlice"
 
 const RecipeDiv = ({ recipe }) => {
-  const favorites = useSelector((state) => state.favorites.value)
+  const checkout = useSelector((state) => state.checkout.value)
   const dispatch = useDispatch()
 
-  const isInFavorites = favorites.includes(recipe)
+  const isInCheckout = checkout.includes(recipe)
 
   return (
     <div
@@ -27,13 +27,13 @@ const RecipeDiv = ({ recipe }) => {
       </div>
       <div>
         <button onClick={() => dispatch(showModal({ recipe }))}>Details</button>
-        {isInFavorites ? (
-          <button onClick={() => dispatch(removeRecipe(recipe))}>
-            Remove as Favourite
+        {isInCheckout ? (
+          <button onClick={() => dispatch(removeFromCheckout(recipe))}>
+            Remove from Checkout
           </button>
         ) : (
-          <button onClick={() => dispatch(addRecipe(recipe))}>
-            Set as Favourite
+          <button onClick={() => dispatch(addToCheckout(recipe))}>
+            Add to Checkout
           </button>
         )}
       </div>
