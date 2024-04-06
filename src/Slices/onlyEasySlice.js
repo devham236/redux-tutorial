@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const easyRecipes = createSlice({
-  name: "easyRecipes",
+const onlyEasySlice = createSlice({
+  name: "onlyEasy",
   initialState: { value: false },
   reducers: {
     toggleState: (state, action) => {
@@ -10,5 +10,5 @@ const easyRecipes = createSlice({
   },
 })
 
-export const { toggleState } = easyRecipes.actions
-export default easyRecipes.reducer
+export const { toggleState } = onlyEasySlice.actions
+export default onlyEasySlice.reducer
