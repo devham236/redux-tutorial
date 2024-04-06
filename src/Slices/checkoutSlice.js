@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { hideModal } from "./modalSlice"
 
 const checkoutSlice = createSlice({
   name: "checkout",
@@ -7,7 +6,6 @@ const checkoutSlice = createSlice({
   reducers: {
     addToCheckout: (state, action) => {
       state.value.push(action.payload)
-      hideModal()
     },
   },
 })
