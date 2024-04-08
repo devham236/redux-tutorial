@@ -1,17 +1,12 @@
 import React from "react"
 import { Link, Route, Routes } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
 import Recipes from "./Pages/Recipes"
 import Modal from "./Components/Modal"
 import Checkout from "./Pages/Checkout"
-import { toggleState } from "./Slices/onlyEasySlice"
+import { useSelector } from "react-redux"
 
 const App = () => {
   const modal = useSelector((state) => state.modal.value)
-  const onlyEasy = useSelector((state) => state.onlyEasy.value)
-  const dispatch = useDispatch()
-
-  console.log(onlyEasy)
 
   return (
     <>
