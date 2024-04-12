@@ -1,7 +1,6 @@
 import React from "react"
-import { hideModal } from "../Slices/modalSlice"
+import { closeModal } from "../Slices/modalSlice"
 import { useDispatch } from "react-redux"
-import { addToCheckout } from "../Slices/checkoutSlice"
 
 const Modal = ({ recipe }) => {
   const dispatch = useDispatch()
@@ -21,7 +20,7 @@ const Modal = ({ recipe }) => {
           <li key={index}>{i}</li>
         ))}
       </ul>
-      <button onClick={() => dispatch(hideModal())}>Close Modal</button>
+      <button onClick={() => dispatch(closeModal())}>Close Modal</button>
     </div>
   )
 }
