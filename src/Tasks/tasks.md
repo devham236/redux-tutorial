@@ -6,3 +6,10 @@
 - Every item can be added to a checkout page
 - A modal shows up when an item gets clicked
 - In the checkout page, show the sum of price/duration/etc.
+
+## Packages
+
+- redux
+- react-redux
+- @reduxjs/toolkit
+- react-router-dom
