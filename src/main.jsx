@@ -10,7 +10,7 @@ import toggleReducer from "./Slices/toggleSlice.js"
 const store = configureStore({
   reducer: {
     recipes: recipesReducer,
-    toggleRecipes: toggleReducer,
+    toggle: toggleReducer,
   },
 })
 

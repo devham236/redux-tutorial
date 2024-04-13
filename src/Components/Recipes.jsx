@@ -1,12 +1,17 @@
 import React from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+import { switchState } from "../Slices/toggleSlice"
 
 const Recipes = () => {
   const recipes = useSelector((state) => state.recipes.value)
-  console.log(recipes)
+  const toggle = useSelector((state) => state.toggle.value)
+  const dispatch = useDispatch()
+
+  const slicedRecipes = recipes.slice(0, toggle ? 7 : 5)
+
   return (
     <div>
-      {recipes.map((recipe) => (
+      {slicedRecipes.map((recipe) => (
         <div
           key={recipe.id}
           style={{
@@ -29,7 +34,9 @@ const Recipes = () => {
           </div>
         </div>
       ))}
-      <button>Show More</button>
+      <button onClick={() => dispatch(switchState())}>
+        Show {toggle ? "Less" : "More"}
+      </button>
     </div>
   )
 }
