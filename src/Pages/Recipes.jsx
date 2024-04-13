@@ -16,7 +16,7 @@ const Recipes = () => {
 
   return (
     <div>
-      <div>
+      <div style={{ marginBottom: "1rem" }}>
         <label htmlFor="easy">show only easy recipes</label>
         <input
           type="checkbox"
