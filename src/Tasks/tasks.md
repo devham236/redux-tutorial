@@ -1,8 +1,8 @@
 ## Tasks
 
-- Render 3 items
-- Hide and show 2 more items
-- A modal appears with more information when clicking a button
-- Favorite an item when clicking on a heart
-- Favorited items get rendered on a different page
-- Only show items over or under a specific price/duration/etc.
+- Render 5 items.
+- Add a button which shows two more items and hides them.
+- Add a input which only shows items with a specific price/difficulty/etc.
+- Every item can be added to a checkout page
+- A modal shows up when an item gets clicked
+- In the checkout page, show the sum of price/duration/etc.
