@@ -2,8 +2,12 @@ import React from "react"
 import { Link, Route, Routes } from "react-router-dom"
 import Recipes from "./Pages/Recipes"
 import Checkout from "./Pages/Checkout"
+import { useSelector } from "react-redux"
+import Modal from "./Components/Modal"
 
 const App = () => {
+  const modal = useSelector((state) => state.modal.value)
+
   return (
     <div style={{ position: "relative" }}>
       <div style={{ display: "flex" }}>
@@ -20,6 +24,7 @@ const App = () => {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
+      {modal && <Modal modal={modal} />}
     </div>
   )
 }

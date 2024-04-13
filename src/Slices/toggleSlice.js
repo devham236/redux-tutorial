@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const toggleSlice = createSlice({
   name: "toggleRecipes",
-  initialState: { value: false },
+  initialState: { value: { showMoreOrLess: false, onlyEasy: false } },
   reducers: {
-    switchState: (state, action) => {
-      state.value = !state.value
+    switchMoreOrLess: (state, action) => {
+      state.value.showMoreOrLess = !state.value.showMoreOrLess
     },
   },
 })
 
-export const { switchState } = toggleSlice.actions
+export const { switchMoreOrLess } = toggleSlice.actions
 export default toggleSlice.reducer

@@ -1,6 +1,9 @@
 import React from "react"
+import { useDispatch } from "react-redux"
+import { showModal } from "../Slices/modalSlice"
 
 const RecipeDiv = ({ recipe }) => {
+  const dispatch = useDispatch()
   return (
     <div
       key={recipe.id}
@@ -19,7 +22,7 @@ const RecipeDiv = ({ recipe }) => {
         <p>{recipe.rating}</p>
       </div>
       <div>
-        <button>Details</button>
+        <button onClick={() => dispatch(showModal(recipe))}>Details</button>
         <button>Add to checkout</button>
       </div>
     </div>
