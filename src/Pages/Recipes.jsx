@@ -8,11 +8,23 @@ const Recipes = () => {
   const toggle = useSelector((state) => state.toggle.value)
   const dispatch = useDispatch()
 
-  const slicedRecipes = recipes.slice(0, toggle.showMoreOrLess ? 7 : 5)
+  const alteredArray = toggle.onlyEasy
+    ? recipes
+        .filter((recipe) => recipe.difficulty === "Easy")
+        .slice(0, toggle.showMoreOrLess ? 7 : 5)
+    : recipes.slice(0, toggle.showMoreOrLess ? 7 : 5)
 
   return (
     <div>
-      {slicedRecipes.map((recipe) => (
+      <div>
+        <label htmlFor="easy">show only easy recipes</label>
+        <input
+          type="checkbox"
+          id="easy"
+          onClick={() => dispatch(switchState("onlyEasy"))}
+        />
+      </div>
+      {alteredArray.map((recipe) => (
         <RecipeDiv key={recipe.id} recipe={recipe} />
       ))}
       <button onClick={() => dispatch(switchState("showMoreOrLess"))}>
