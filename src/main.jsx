@@ -5,10 +5,12 @@ import { configureStore } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import recipesReducer from "./Slices/recipesSlice.js"
+import toggleReducer from "./Slices/toggleSlice.js"
 
 const store = configureStore({
   reducer: {
     recipes: recipesReducer,
+    toggleRecipes: toggleReducer,
   },
 })
 

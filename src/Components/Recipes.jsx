@@ -29,6 +29,7 @@ const Recipes = () => {
           </div>
         </div>
       ))}
+      <button>Show More</button>
     </div>
   )
 }
