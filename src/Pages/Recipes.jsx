@@ -1,6 +1,6 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { switchMoreOrLess } from "../Slices/toggleSlice"
+import { switchState } from "../Slices/toggleSlice"
 import RecipeDiv from "../Components/RecipeDiv"
 
 const Recipes = () => {
@@ -15,7 +15,7 @@ const Recipes = () => {
       {slicedRecipes.map((recipe) => (
         <RecipeDiv key={recipe.id} recipe={recipe} />
       ))}
-      <button onClick={() => dispatch(switchMoreOrLess())}>
+      <button onClick={() => dispatch(switchState("showMoreOrLess"))}>
         Show {toggle.showMoreOrLess ? "Less" : "More"}
       </button>
     </div>

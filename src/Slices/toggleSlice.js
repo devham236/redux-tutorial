@@ -4,11 +4,11 @@ const toggleSlice = createSlice({
   name: "toggleRecipes",
   initialState: { value: { showMoreOrLess: false, onlyEasy: false } },
   reducers: {
-    switchMoreOrLess: (state, action) => {
-      state.value.showMoreOrLess = !state.value.showMoreOrLess
+    switchState: (state, action) => {
+      state.value[action.payload] = !state.value[action.payload]
     },
   },
 })
 
-export const { switchMoreOrLess } = toggleSlice.actions
+export const { switchState } = toggleSlice.actions
 export default toggleSlice.reducer
