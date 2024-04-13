@@ -10,8 +10,6 @@ const Checkout = () => {
     return prev + curr.cookTimeMinutes
   }, 0)
 
-  console.log(totalPrepTime)
-
   return (
     <div>
       {checkout.length > 0 ? (
