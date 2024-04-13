@@ -1,9 +1,13 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { showModal } from "../Slices/modalSlice"
+import { addToCheckout, removeFromCheckout } from "../Slices/checkoutSlice"
 
 const RecipeDiv = ({ recipe }) => {
   const dispatch = useDispatch()
+  const checkout = useSelector((state) => state.checkout.value)
+  const isInCheckout = checkout.find((item) => item.id === recipe.id)
+
   return (
     <div
       key={recipe.id}
@@ -23,7 +27,15 @@ const RecipeDiv = ({ recipe }) => {
       </div>
       <div>
         <button onClick={() => dispatch(showModal(recipe))}>Details</button>
-        <button>Add to checkout</button>
+        {isInCheckout ? (
+          <button onClick={() => dispatch(removeFromCheckout(recipe))}>
+            Remove from checkout
+          </button>
+        ) : (
+          <button onClick={() => dispatch(addToCheckout(recipe))}>
+            Add to checkout
+          </button>
+        )}
       </div>
     </div>
   )

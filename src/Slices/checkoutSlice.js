@@ -4,8 +4,12 @@ const checkoutSlice = createSlice({
   name: "checkout",
   initialState: { value: [] },
   reducers: {
-    addToCheckout: (state, action) => {},
-    removeFromCheckout: (state, action) => {},
+    addToCheckout: (state, action) => {
+      state.value.push(action.payload)
+    },
+    removeFromCheckout: (state, action) => {
+      state.value = state.value.filter((item) => item.id != action.payload.id)
+    },
   },
 })
 
