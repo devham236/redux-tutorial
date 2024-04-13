@@ -6,7 +6,7 @@ const RecipeDiv = ({ recipe }) => {
       key={recipe.id}
       style={{
         border: "1px solid grey",
-        marginBottom: "2rem",
+        marginBottom: "1rem",
         display: "flex",
       }}
     >

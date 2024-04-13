@@ -6,11 +6,13 @@ import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import recipesReducer from "./Slices/recipesSlice.js"
 import toggleReducer from "./Slices/toggleSlice.js"
+import modalReducer from "./Slices/modalSlice.js"
 
 const store = configureStore({
   reducer: {
     recipes: recipesReducer,
     toggle: toggleReducer,
+    modal: modalReducer,
   },
 })
 

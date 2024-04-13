@@ -5,7 +5,7 @@ import Checkout from "./Pages/Checkout"
 
 const App = () => {
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <div style={{ display: "flex" }}>
         <Link to={"/"} style={{ marginRight: "2rem" }}>
           <h1>Recipes</h1>
