@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, Route, Routes } from "react-router-dom"
-import Recipes from "./Components/Recipes"
-import Checkout from "./Components/Checkout"
+import Recipes from "./Pages/Recipes"
+import Checkout from "./Pages/Checkout"
 
 const App = () => {
   return (
