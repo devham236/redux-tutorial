@@ -6,6 +6,7 @@ import { addToCheckout, removeFromCheckout } from "../Slices/checkoutSlice"
 const RecipeDiv = ({ recipe }) => {
   const dispatch = useDispatch()
   const checkout = useSelector((state) => state.checkout.value)
+
   const isInCheckout = checkout.find((item) => item.id === recipe.id)
 
   return (
