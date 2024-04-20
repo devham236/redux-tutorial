@@ -1,38 +1,34 @@
 import React from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { switchState } from "../Slices/changeRecipesSlice"
 import RecipeDiv from "../Components/RecipeDiv"
-import { useDispatch, useSelector } from "react-redux"
-import { toggleRecipes } from "../Slices/recipeSlice"
-import { toggleState } from "../Slices/onlyEasySlice"
 
 const Recipes = () => {
-  const dispatch = useDispatch()
   const recipes = useSelector((state) => state.recipes.value)
-  const onlyEasy = useSelector((state) => state.onlyEasy.value)
+  const changeRecipes = useSelector((state) => state.changeRecipes.value)
+  const dispatch = useDispatch()
 
-  const recipesArray = onlyEasy
-    ? recipes.filter((recipe) => recipe.difficulty === "Easy")
-    : recipes
+  const alteredArray = changeRecipes.onlyEasy
+    ? recipes
+        .filter((recipe) => recipe.difficulty === "Easy")
+        .slice(0, changeRecipes.showMoreOrLess ? 7 : 5)
+    : recipes.slice(0, changeRecipes.showMoreOrLess ? 7 : 5)
 
   return (
     <div>
-      <div
-        style={{ display: "flex", alignItems: "center", marginBottom: "2rem" }}
-      >
-        <label htmlFor="difficulty">only show easy recipes</label>
+      <div style={{ marginBottom: "1rem" }}>
+        <label htmlFor="easy">show only easy recipes</label>
         <input
           type="checkbox"
-          name="difficulty"
-          id="difficulty"
-          onClick={() => dispatch(toggleState())}
+          id="easy"
+          onClick={() => dispatch(switchState("onlyEasy"))}
         />
       </div>
-      {recipesArray.map((recipe) => (
+      {alteredArray.map((recipe) => (
         <RecipeDiv key={recipe.id} recipe={recipe} />
       ))}
-      <button
-        onClick={() => dispatch(toggleRecipes(recipes.length < 7 ? 7 : 5))}
-      >
-        Show {recipes.length < 7 ? "more" : "less"} Recipes
+      <button onClick={() => dispatch(switchState("showMoreOrLess"))}>
+        Show {changeRecipes.showMoreOrLess ? "Less" : "More"}
       </button>
     </div>
   )

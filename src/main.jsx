@@ -6,17 +6,17 @@ import { configureStore } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 
-import recipesReducer from "./Slices/recipeSlice.js"
+import recipesReducer from "./Slices/recipesSlice.js"
+import changeRecipesReducer from "./Slices/changeRecipesSlice.js"
 import modalReducer from "./Slices/modalSlice.js"
 import checkoutReducer from "./Slices/checkoutSlice.js"
-import onlyEasyReducer from "./Slices/onlyEasySlice.js"
 
 const store = configureStore({
   reducer: {
     recipes: recipesReducer,
+    changeRecipes: changeRecipesReducer,
     modal: modalReducer,
     checkout: checkoutReducer,
-    onlyEasy: onlyEasyReducer,
   },
 })
 

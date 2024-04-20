@@ -1,4 +1,4 @@
-const getRecipes = async () => {
+export const getRecipes = async () => {
   try {
     const res = await fetch("/data.json")
     const data = await res.json()
@@ -7,5 +7,3 @@ const getRecipes = async () => {
     return error
   }
 }
-
-export default getRecipes

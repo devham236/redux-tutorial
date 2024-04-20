@@ -5,13 +5,13 @@ const modalSlice = createSlice({
   initialState: { value: null },
   reducers: {
     showModal: (state, action) => {
-      state.value = action.payload.recipe
+      state.value = action.payload
     },
-    closeModal: (state, action) => {
+    hideModal: (state, action) => {
       state.value = null
     },
   },
 })
 
-export const { showModal, closeModal } = modalSlice.actions
+export const { showModal, hideModal } = modalSlice.actions
 export default modalSlice.reducer

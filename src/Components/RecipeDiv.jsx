@@ -4,36 +4,37 @@ import { showModal } from "../Slices/modalSlice"
 import { addToCheckout, removeFromCheckout } from "../Slices/checkoutSlice"
 
 const RecipeDiv = ({ recipe }) => {
-  const checkout = useSelector((state) => state.checkout.value)
   const dispatch = useDispatch()
+  const checkout = useSelector((state) => state.checkout.value)
 
-  const isInCheckout = checkout.includes(recipe)
+  const isInCheckout = checkout.find((item) => item.id === recipe.id)
 
   return (
     <div
+      key={recipe.id}
       style={{
+        border: "1px solid grey",
+        marginBottom: "1rem",
         display: "flex",
-        marginBottom: "2rem",
-        border: "1px solid lightgrey",
       }}
     >
       <div style={{ width: "100px", height: "100px" }}>
         <img src={recipe.image} style={{ width: "100%", height: "100%" }} />
       </div>
       <div>
-        <p style={{ margin: "0" }}>{recipe.name}</p>
-        <p style={{ margin: "0" }}>{recipe.difficulty}</p>
-        <p style={{ margin: "0" }}>{recipe.prepTimeMinutes}min</p>
+        <p>{recipe.name}</p>
+        <p>{recipe.difficulty}</p>
+        <p>{recipe.rating}</p>
       </div>
       <div>
-        <button onClick={() => dispatch(showModal({ recipe }))}>Details</button>
+        <button onClick={() => dispatch(showModal(recipe))}>Details</button>
         {isInCheckout ? (
           <button onClick={() => dispatch(removeFromCheckout(recipe))}>
-            Remove from Checkout
+            Remove from checkout
           </button>
         ) : (
           <button onClick={() => dispatch(addToCheckout(recipe))}>
-            Add to Checkout
+            Add to checkout
           </button>
         )}
       </div>
