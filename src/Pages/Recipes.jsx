@@ -1,18 +1,18 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { switchState } from "../Slices/toggleSlice"
+import { switchState } from "../Slices/changeRecipesSlice"
 import RecipeDiv from "../Components/RecipeDiv"
 
 const Recipes = () => {
   const recipes = useSelector((state) => state.recipes.value)
-  const toggle = useSelector((state) => state.toggle.value)
+  const changeRecipes = useSelector((state) => state.changeRecipes.value)
   const dispatch = useDispatch()
 
-  const alteredArray = toggle.onlyEasy
+  const alteredArray = changeRecipes.onlyEasy
     ? recipes
         .filter((recipe) => recipe.difficulty === "Easy")
-        .slice(0, toggle.showMoreOrLess ? 7 : 5)
-    : recipes.slice(0, toggle.showMoreOrLess ? 7 : 5)
+        .slice(0, changeRecipes.showMoreOrLess ? 7 : 5)
+    : recipes.slice(0, changeRecipes.showMoreOrLess ? 7 : 5)
 
   return (
     <div>
@@ -28,7 +28,7 @@ const Recipes = () => {
         <RecipeDiv key={recipe.id} recipe={recipe} />
       ))}
       <button onClick={() => dispatch(switchState("showMoreOrLess"))}>
-        Show {toggle.showMoreOrLess ? "Less" : "More"}
+        Show {changeRecipes.showMoreOrLess ? "Less" : "More"}
       </button>
     </div>
   )
