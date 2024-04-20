@@ -4,6 +4,7 @@ import RecipeDiv from "../Components/RecipeDiv"
 
 const Checkout = () => {
   const checkout = useSelector((state) => state.checkout.value)
+
   const totalPrepTime = checkout.reduce((prev, curr) => {
     return prev + curr.prepTimeMinutes
   }, 0)
