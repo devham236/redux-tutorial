@@ -1,9 +1,14 @@
 import React from "react"
 import { showModal } from "../Slices/modalSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { addToCheckout, removeFromCheckout } from "../Slices/checkoutSlice"
 
 const RecipeDiv = ({ recipe }) => {
   const dispatch = useDispatch()
+  const checkout = useSelector((state) => state.checkout.value)
+
+  const isInCheckout = checkout.includes(recipe)
+
   return (
     <div
       style={{
@@ -13,7 +18,7 @@ const RecipeDiv = ({ recipe }) => {
       }}
       key={recipe.id}
     >
-      <div style={{ width: "200px", height: "200px" }}>
+      <div style={{ width: "100px", height: "100px" }}>
         <img
           src={recipe.image}
           alt=""
@@ -26,7 +31,15 @@ const RecipeDiv = ({ recipe }) => {
         <p>{recipe.difficulty}</p>
       </div>
       <div>
-        <button>Add to Checkout</button>
+        {isInCheckout ? (
+          <button onClick={() => dispatch(removeFromCheckout(recipe))}>
+            Remove from Checkout
+          </button>
+        ) : (
+          <button onClick={() => dispatch(addToCheckout(recipe))}>
+            Add to Checkout
+          </button>
+        )}
         <button onClick={() => dispatch(showModal(recipe))}>Details</button>
       </div>
     </div>
