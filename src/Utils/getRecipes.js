@@ -1,9 +1,8 @@
 const getRecipes = async () => {
   try {
     const res = await fetch("/data.json")
-    const data = await res.json()
-
-    return data
+    const { recipes } = await res.json()
+    return recipes
   } catch (error) {
     return error
   }

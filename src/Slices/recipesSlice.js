@@ -7,7 +7,7 @@ const recipesSlice = createSlice({
   name: "recipes",
   initialState: {
     value: {
-      data: recipesData.recipes,
+      data: recipesData,
       showOnlyEasy: false,
       showMore: false,
     },
