@@ -16,7 +16,7 @@ const Recipes = () => {
     : data.slice(0, showMore ? 7 : 5)
 
   useEffect(() => {
-    dispatch(fetchRecipes()).then((data) => console.log(data))
+    dispatch(fetchRecipes())
   }, [])
 
   return (

@@ -20,7 +20,6 @@ const recipesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchRecipes.pending, (state) => {
       state.value.loading = true
-      console.log("pending")
     })
     builder.addCase(fetchRecipes.fulfilled, (state, action) => {
       state.value.data = action.payload
