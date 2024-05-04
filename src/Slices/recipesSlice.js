@@ -1,18 +1,13 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
+import getRecipes from "../Utils/getRecipes"
 
-export const getRecipes = createAsyncThunk("recipe/getRecipe", async () => {
-  return fetch("/data.json")
-    .then((res) => res.json())
-    .then((data) => data)
-})
+const recipesData = await getRecipes()
 
 const recipesSlice = createSlice({
   name: "recipes",
   initialState: {
     value: {
-      data: [],
-      loading: false,
-      error: "",
+      data: recipesData,
       showOnlyEasy: false,
       showMore: false,
     },
@@ -21,21 +16,6 @@ const recipesSlice = createSlice({
     toggleValues: (state, action) => {
       state.value[action.payload] = !state.value[action.payload]
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(getRecipes.pending, (state) => {
-      state.loading = true
-    })
-    builder.addCase(getRecipes.fulfilled, (state, action) => {
-      state.loading = false
-      state.data = action.payload
-      state.error = ""
-    })
-    builder.addCase(getRecipes.rejected, (state, action) => {
-      state.loading = false
-      state.data = []
-      state.error = action.error
-    })
   },
 })
 
