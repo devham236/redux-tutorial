@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import RecipeDiv from "../Components/RecipeDiv"
 import { toggleValues } from "../Slices/recipesSlice"
+import fetchRecipes from "../Utils/fetchRecipes"
 
 const Recipes = () => {
   const dispatch = useDispatch()
@@ -13,6 +14,10 @@ const Recipes = () => {
         .filter((recipe) => recipe.difficulty === "Easy")
         .slice(0, showMore ? 7 : 5)
     : data.slice(0, showMore ? 7 : 5)
+
+  useEffect(() => {
+    dispatch(fetchRecipes()).then((data) => console.log(data))
+  }, [])
 
   return (
     <div>
