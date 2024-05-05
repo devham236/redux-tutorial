@@ -1,5 +1,5 @@
 import React from "react"
-import { hideModal } from "../Slices/modalSlice"
+import { closeModal } from "../Slices/modalSlice"
 import { useDispatch } from "react-redux"
 
 const Modal = ({ modal }) => {
@@ -11,17 +11,17 @@ const Modal = ({ modal }) => {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        backgroundColor: "lightblue",
         padding: "2rem",
+        backgroundColor: "lightblue",
       }}
     >
-      <h1>{modal.name}</h1>
+      <p>{modal.name}</p>
       <ul>
         {modal.ingredients.map((ingre, index) => (
           <li key={index}>{ingre}</li>
         ))}
       </ul>
-      <button onClick={() => dispatch(hideModal())}>Close Modal</button>
+      <button onClick={() => dispatch(closeModal())}>Close</button>
     </div>
   )
 }

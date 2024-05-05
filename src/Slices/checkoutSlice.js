@@ -8,7 +8,9 @@ const checkoutSlice = createSlice({
       state.value.push(action.payload)
     },
     removeFromCheckout: (state, action) => {
-      state.value = state.value.filter((item) => item.id != action.payload.id)
+      state.value = state.value.filter(
+        (recipe) => recipe.id != action.payload.id
+      )
     },
   },
 })

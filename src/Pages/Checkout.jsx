@@ -5,16 +5,22 @@ import RecipeDiv from "../Components/RecipeDiv"
 const Checkout = () => {
   const checkout = useSelector((state) => state.checkout.value)
 
-  const totalPrepTime = checkout.reduce((prev, curr) => {
-    return prev + curr.prepTimeMinutes
+  const totalCookTime = checkout.reduce((prev, curr) => {
+    return prev + curr.cookTimeMinutes
   }, 0)
 
   return (
     <div>
-      {checkout.map((item) => (
-        <RecipeDiv key={item.id} recipe={item} />
-      ))}
-      <p>Your total prep time: {totalPrepTime}</p>
+      {checkout.length > 0 ? (
+        <>
+          <p>Your total cook time is: {totalCookTime}min</p>
+          {checkout.map((recipe) => (
+            <RecipeDiv key={recipe.id} recipe={recipe} />
+          ))}
+        </>
+      ) : (
+        <p>Your Checkout Bag is empty.</p>
+      )}
     </div>
   )
 }

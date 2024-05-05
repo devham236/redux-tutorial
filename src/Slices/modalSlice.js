@@ -7,11 +7,11 @@ const modalSlice = createSlice({
     showModal: (state, action) => {
       state.value = action.payload
     },
-    hideModal: (state, action) => {
+    closeModal: (state) => {
       state.value = null
     },
   },
 })
 
-export const { showModal, hideModal } = modalSlice.actions
+export const { showModal, closeModal } = modalSlice.actions
 export default modalSlice.reducer

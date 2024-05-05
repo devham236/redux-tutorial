@@ -1,34 +1,41 @@
-import React from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { switchState } from "../Slices/changeRecipesSlice"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import RecipeDiv from "../Components/RecipeDiv"
+import { toggleValues } from "../Slices/recipesSlice"
+import fetchRecipes from "../Utils/fetchRecipes"
 
 const Recipes = () => {
-  const recipes = useSelector((state) => state.recipes.value)
-  const changeRecipes = useSelector((state) => state.changeRecipes.value)
   const dispatch = useDispatch()
-
-  const alteredArray = changeRecipes.onlyEasy
-    ? recipes
+  const { data, showMore, showOnlyEasy } = useSelector(
+    (state) => state.recipes.value
+  )
+  const alteredArray = showOnlyEasy
+    ? data
         .filter((recipe) => recipe.difficulty === "Easy")
-        .slice(0, changeRecipes.showMoreOrLess ? 7 : 5)
-    : recipes.slice(0, changeRecipes.showMoreOrLess ? 7 : 5)
+        .slice(0, showMore ? 7 : 5)
+    : data.slice(0, showMore ? 7 : 5)
+
+  useEffect(() => {
+    dispatch(fetchRecipes())
+  }, [])
 
   return (
     <div>
-      <div style={{ marginBottom: "1rem" }}>
-        <label htmlFor="easy">show only easy recipes</label>
-        <input
-          type="checkbox"
-          id="easy"
-          onClick={() => dispatch(switchState("onlyEasy"))}
-        />
+      <label htmlFor="showEasyRecipes">Only show Easy recipes</label>
+      <input
+        onClick={() => dispatch(toggleValues("showOnlyEasy"))}
+        type="checkbox"
+        name="showEasyRecipes"
+        id="showEasyRecipes"
+      />
+      <div>
+        {alteredArray.map((recipe) => (
+          <RecipeDiv key={recipe.id} recipe={recipe} />
+        ))}
       </div>
-      {alteredArray.map((recipe) => (
-        <RecipeDiv key={recipe.id} recipe={recipe} />
-      ))}
-      <button onClick={() => dispatch(switchState("showMoreOrLess"))}>
-        Show {changeRecipes.showMoreOrLess ? "Less" : "More"}
+
+      <button onClick={() => dispatch(toggleValues("showMore"))}>
+        {showMore ? "Show less" : "Show more"}
       </button>
     </div>
   )
