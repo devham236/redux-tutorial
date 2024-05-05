@@ -1,6 +1,14 @@
 import React from "react"
+import { addItem, removeItem } from "../Slices/checkoutSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { openModal } from "../Slices/modalSlice"
 
 const RecipeDiv = ({ recipe }) => {
+  const { data } = useSelector((state) => state.checkout)
+  const dispatch = useDispatch()
+
+  const isInCheckout = data.includes(recipe)
+
   return (
     <div
       key={recipe.id}
@@ -20,11 +28,20 @@ const RecipeDiv = ({ recipe }) => {
         <p>{recipe.name}</p>
         <p>{recipe.rating}</p>
         <p>{recipe.difficulty}</p>
+        <p>{recipe.cookTimeMinutes}min</p>
       </div>
 
       <div>
-        <button>Add To Checkout</button>
-        <button>Details</button>
+        {isInCheckout ? (
+          <button onClick={() => dispatch(removeItem(recipe))}>
+            Remove from Checkout
+          </button>
+        ) : (
+          <button onClick={() => dispatch(addItem(recipe))}>
+            Add To Checkout
+          </button>
+        )}
+        <button onClick={() => dispatch(openModal(recipe))}>Details</button>
       </div>
     </div>
   )

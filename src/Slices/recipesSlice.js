@@ -8,25 +8,28 @@ const recipesSlice = createSlice({
     loading: false,
     error: "",
     showOnlyEasy: false,
-    showMoreOrLess: false,
+    showMore: false,
   },
-  reducers: {},
+  reducers: {
+    changeRecipes: (state, action) => {
+      state[action.payload] = !state[action.payload]
+    },
+  },
   extraReducers: (builder) => {
-    builder.addCase(fetchRecipes.pending, (state, action) => {
+    builder.addCase(fetchRecipes.pending, (state) => {
       state.loading = true
     })
     builder.addCase(fetchRecipes.fulfilled, (state, action) => {
       state.loading = false
       state.data = action.payload
       state.error = ""
-      console.log(action)
     })
     builder.addCase(fetchRecipes.rejected, (state, action) => {
       state.loading = false
-      state.error = action.error
-      console.log(action)
+      state.error = action.error.message
     })
   },
 })
 
+export const { changeRecipes } = recipesSlice.actions
 export default recipesSlice.reducer
