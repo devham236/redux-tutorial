@@ -1,9 +1,10 @@
 import React from "react"
 import { Link, Route, Routes } from "react-router-dom"
+import { useSelector } from "react-redux"
+
 import Recipes from "./Pages/Recipes"
 import Checkout from "./Pages/Checkout"
 import Modal from "./Components/Modal"
-import { useSelector } from "react-redux"
 
 const App = () => {
   const { value } = useSelector((state) => state.modal)

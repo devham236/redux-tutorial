@@ -1,8 +1,9 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { changeRecipes } from "../Slices/recipesSlice"
+
 import fetchRecipes from "../Utils/fetchRecipes"
 import RecipeDiv from "../Components/RecipeDiv"
-import { changeRecipes } from "../Slices/recipesSlice"
 
 const Recipes = () => {
   const { data, loading, error, showOnlyEasy, showMore } = useSelector(
