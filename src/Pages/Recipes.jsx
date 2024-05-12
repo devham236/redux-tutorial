@@ -6,7 +6,9 @@ import fetchRecipes from "../Utils/fetchRecipes"
 
 const Recipes = () => {
   const dispatch = useDispatch()
-  const { data, showMore, showOnlyEasy } = useSelector((state) => state.recipes)
+  const { data, loading, error, showMore, showOnlyEasy } = useSelector(
+    (state) => state.recipes
+  )
 
   const alteredArray = showOnlyEasy
     ? data
@@ -20,22 +22,32 @@ const Recipes = () => {
 
   return (
     <div>
-      <label htmlFor="showEasyRecipes">Only show Easy recipes</label>
-      <input
-        onClick={() => dispatch(alterArray("showOnlyEasy"))}
-        type="checkbox"
-        name="showEasyRecipes"
-        id="showEasyRecipes"
-      />
-      <div>
-        {alteredArray.map((recipe) => (
-          <RecipeDiv key={recipe.id} recipe={recipe} />
-        ))}
-      </div>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <>
+          <div style={{ marginBottom: "1rem" }}>
+            <label htmlFor="showEasyRecipes">Only show Easy recipes</label>
+            <input
+              onClick={() => dispatch(alterArray("showOnlyEasy"))}
+              type="checkbox"
+              name="showEasyRecipes"
+              id="showEasyRecipes"
+            />
+          </div>
+          <div>
+            {alteredArray.map((recipe) => (
+              <RecipeDiv key={recipe.id} recipe={recipe} />
+            ))}
+          </div>
 
-      <button onClick={() => dispatch(alterArray("showMore"))}>
-        {showMore ? "Show less" : "Show more"}
-      </button>
+          <button onClick={() => dispatch(alterArray("showMore"))}>
+            {showMore ? "Show less" : "Show more"}
+          </button>
+        </>
+      )}
     </div>
   )
 }

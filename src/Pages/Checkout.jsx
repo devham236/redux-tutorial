@@ -13,7 +13,9 @@ const Checkout = () => {
     <div>
       {value.length > 0 ? (
         <>
-          <p>Your total cook time is: {totalCookTime}min</p>
+          <p style={{ marginBottom: "1rem" }}>
+            Your total cook time is: {totalCookTime}min
+          </p>
           {value.map((recipe) => (
             <RecipeDiv key={recipe.id} recipe={recipe} />
           ))}

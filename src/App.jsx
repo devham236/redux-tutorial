@@ -8,10 +8,10 @@ import { useSelector } from "react-redux"
 const App = () => {
   const modal = useSelector((state) => state.modal.value)
   return (
-    <div>
-      <div style={{ display: "flex", position: "relative" }}>
+    <div style={{ position: "relative" }}>
+      <div style={{ display: "flex" }}>
         <Link to={"/"}>
-          <h1>Recipes</h1>
+          <h1 style={{ marginRight: "1rem" }}>Recipes</h1>
         </Link>
         <Link to={"/checkout"}>
           <h1>Checkout</h1>
