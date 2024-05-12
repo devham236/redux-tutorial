@@ -1,14 +1,13 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import RecipeDiv from "../Components/RecipeDiv"
-import { toggleValues } from "../Slices/recipesSlice"
+import { alterArray } from "../Slices/recipesSlice"
 import fetchRecipes from "../Utils/fetchRecipes"
 
 const Recipes = () => {
   const dispatch = useDispatch()
-  const { data, showMore, showOnlyEasy } = useSelector(
-    (state) => state.recipes.value
-  )
+  const { data, showMore, showOnlyEasy } = useSelector((state) => state.recipes)
+
   const alteredArray = showOnlyEasy
     ? data
         .filter((recipe) => recipe.difficulty === "Easy")
@@ -23,7 +22,7 @@ const Recipes = () => {
     <div>
       <label htmlFor="showEasyRecipes">Only show Easy recipes</label>
       <input
-        onClick={() => dispatch(toggleValues("showOnlyEasy"))}
+        onClick={() => dispatch(alterArray("showOnlyEasy"))}
         type="checkbox"
         name="showEasyRecipes"
         id="showEasyRecipes"
@@ -34,7 +33,7 @@ const Recipes = () => {
         ))}
       </div>
 
-      <button onClick={() => dispatch(toggleValues("showMore"))}>
+      <button onClick={() => dispatch(alterArray("showMore"))}>
         {showMore ? "Show less" : "Show more"}
       </button>
     </div>
