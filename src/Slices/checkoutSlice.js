@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const checkoutSlice = createSlice({
   name: "checkout",
-  initialState: { value: [] },
+  initialState: { items: [] },
   reducers: {
     addToCheckout: (state, action) => {
-      state.value.push(action.payload)
+      state.items.push(action.payload)
     },
     removeFromCheckout: (state, action) => {
-      state.value = state.value.filter(
+      state.items = state.items.filter(
         (recipe) => recipe.id != action.payload.id
       )
     },

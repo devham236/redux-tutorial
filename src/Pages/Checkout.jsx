@@ -3,20 +3,20 @@ import { useSelector } from "react-redux"
 import RecipeDiv from "../Components/RecipeDiv"
 
 const Checkout = () => {
-  const { value } = useSelector((state) => state.checkout)
+  const { items } = useSelector((state) => state.checkout)
 
-  const totalCookTime = value.reduce((prev, curr) => {
+  const totalCookTime = items.reduce((prev, curr) => {
     return prev + curr.cookTimeMinutes
   }, 0)
 
   return (
     <div>
-      {value.length > 0 ? (
+      {items.length > 0 ? (
         <>
           <p style={{ marginBottom: "1rem" }}>
             Your total cook time is: {totalCookTime}min
           </p>
-          {value.map((recipe) => (
+          {items.map((recipe) => (
             <RecipeDiv key={recipe.id} recipe={recipe} />
           ))}
         </>
