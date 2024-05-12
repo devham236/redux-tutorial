@@ -5,9 +5,12 @@ import "./index.css"
 import { BrowserRouter } from "react-router-dom"
 import { configureStore } from "@reduxjs/toolkit"
 import { Provider } from "react-redux"
+import recipesReducer from "./Slices/recipesSlice.js"
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    recipes: recipesReducer,
+  },
 })
 
 ReactDOM.createRoot(document.getElementById("root")).render(
