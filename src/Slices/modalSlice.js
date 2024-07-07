@@ -13,5 +13,7 @@ const modalSlice = createSlice({
   },
 })
 
+console.log(modalSlice.actions)
+
 export const { showModal, closeModal } = modalSlice.actions
 export default modalSlice.reducer
