@@ -18,8 +18,9 @@ const Recipes = () => {
 
   useEffect(() => {
     dispatch(fetchRecipes())
-    console.log("get recipes")
-  }, [dispatch])
+  }, [])
+
+  console.log(data)
 
   return (
     <div>
