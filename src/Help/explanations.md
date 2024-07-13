@@ -1,7 +1,6 @@
 # Redux Explained
 
-## Grobe Vorgehensweise von Redux bzw. reduxjs/toolkit in React Applikationen
-
+## TLDR
 - Store erstellen, enthält alle Slices
 - Slice erstellen, enthält State und die Actions
 - State und Actions in Komponenten importieren und verwenden
