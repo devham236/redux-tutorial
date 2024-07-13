@@ -2,7 +2,7 @@
 
 ## TLDR
 - Store erstellen, enthält alle Slices
-- Slice erstellen, enthält State und die Actions
+- Slice erstellen, enthält State Infos und die Redcuer Functions
 - State und Actions in Komponenten importieren und verwenden
 
 ## Store
