@@ -1,12 +1,12 @@
+# Redux Explained
+
 ## Grobe Vorgehensweise von Redux bzw. reduxjs/toolkit in React Applikationen
 
 - Store erstellen, enthält alle Slices
 - Slice erstellen, enthält State und die Actions
 - State und Actions in Komponenten importieren und verwenden
 
-## Einzelne Elemente im Detail
-
-# Store
+## Store
 
 - Der Store enthält all deine Slices bzw. den gesamten state deiner Applikation
 - Diesen store geben wir der Provider Komponente, die wir von react-redux importieren, als Property mit und legen unsere App innerhalb der Provider Komponente.
@@ -22,13 +22,13 @@ const store = configureStore({
 })
 ```
 
-# Reducer Property im Store
+## Reducer Property im Store
 
 - Um einen store zu erstellen, können wir die "configureStore" function von reduxjs/toolkit benutzen
 - Dieser geben wir ein object mit einer "reducer" property.
 - Dieses reducer object enthält key value pairs, wo der key zum slice zeigt und der value die reducer function vom state ist.
 
-# Slice
+## Slice
 
 - Ein Slice in redux enthält die state Informationen und die reducers, also functions die den state verändern können.
 - Mit der "createSlice" methode von reduxjs/toolkit kann man ganz einfach ein slice erstellen
@@ -50,7 +50,7 @@ const modalSlice = createSlice({
 })
 ```
 
-# Reducers im Slice
+## Reducers im Slice
 
 - Reducers in einem slice sind functions die den state manipulieren können.
 - Ähnlich wie setter functions vom useState hook, kann man mit reducer functions den state verändern
@@ -80,7 +80,7 @@ showModal("some payload")
 
 - Action Creators geben also actions wieder und reducers handhaben diese actions.
 
-# useSelector Hook
+## useSelector Hook
 
 - Mit dem useSelector Hook können wir auf die states in unserem store zugreifen.
 - Als argument geben wir dem hook eine arrow function die den gesamten state aufnimmt und den gewünschten state wiedergibt
@@ -90,7 +90,7 @@ showModal("some payload")
 const modal = useSelector((state) => state.modal.value)
 ```
 
-# useDispatch Hook
+## useDispatch Hook
 
 - Mit dem useDispatch Hook können wir actions zum redux store versenden um state zu verändern.
 - Actions bekommen wir, wenn wir action creators aufrufen, das gewonnene action object geben wir der dispatch function dann als argument mit.
