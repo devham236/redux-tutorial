@@ -20,8 +20,6 @@ const Recipes = () => {
     dispatch(fetchRecipes())
   }, [])
 
-  console.log(data)
-
   return (
     <div>
       {loading ? (
