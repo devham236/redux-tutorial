@@ -100,3 +100,5 @@ const modal = useSelector((state) => state.modal.value)
 const dispatch = useDispatch()
 dispatch(showModal("some payload"))
 ```
+
+## createAsyncThunk
