@@ -1,6 +1,7 @@
 # Redux Explained
 
 ## TLDR
+
 - Store erstellen, enthält alle Slices
 - Slice erstellen, enthält State Infos und die Redcuer Functions
 - State und Actions in Komponenten importieren und verwenden
@@ -102,3 +103,14 @@ dispatch(showModal("some payload"))
 ```
 
 ## createAsyncThunk
+
+- Mit "createAsyncThunk" können wir asynchrone Aktionen handhaben (Data fetching von API's zum Beispiel)
+- Der Methode geben wir ein mal den action type und die asynchrone function an sich, die die Daten fetcht.
+
+```js
+const fetchRecipes = createAsyncThunk("recipes/fetchRecipes", async () => {
+  const res = await fetch("/data.json")
+  const { recipes } = await res.json()
+  return recipes
+})
+```
