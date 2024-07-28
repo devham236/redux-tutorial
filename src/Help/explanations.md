@@ -129,7 +129,7 @@ dispatch(fetchRecipes())
 }
 ```
 
-- Wenn der fetch call erfolgreich war, wird der action type "fulfilled" versendet.
+- Wenn dann der fetch call erfolgreich war, wird der action type "fulfilled" versendet.
 
 ```js
 {
@@ -138,7 +138,7 @@ dispatch(fetchRecipes())
 }
 ```
 
-- Wenn der fetch call fehlschlägt, wird der action type "rejected" versendet.
+- Wenn aber der fetch call fehlschlägt, wird der action type "rejected" versendet.
 
 ```js
 {
@@ -149,4 +149,36 @@ dispatch(fetchRecipes())
 }
 ```
 
--
+- Für diese drei action types gibt es im slice redcuers die diese handhaben. Diese liegen aber in der extraReducers property.
+
+```js
+const recipesSlice = createSlice({
+  name: "recipes",
+  initialState: {
+    data: [],
+    loading: false,
+    error: "",
+    showOnlyEasy: false,
+    showMore: false,
+  },
+  reducers: {
+    alterArray: (state, action) => {
+      state[action.payload] = !state[action.payload]
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchRecipes.pending, (state) => {
+      state.loading = true
+    })
+    builder.addCase(fetchRecipes.fulfilled, (state, action) => {
+      state.data = action.payload
+      state.loading = false
+      state.error = ""
+    })
+    builder.addCase(fetchRecipes.rejected, (state, action) => {
+      state.loading = false
+      state.error = action.error.message
+    })
+  },
+})
+```
