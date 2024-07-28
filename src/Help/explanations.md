@@ -76,7 +76,7 @@ showModal("some payload")
 { type: "modal/showModal", payload: "some payload" }
 ```
 
-- Wenn du also in deiner Komponente die dispatch methode aufrufst, dann rufst du nicht die reducer function direkt auf, sondern du versendest ein action object, an den redux store, das durch den action creator erstellt wird, dieses object hat eine "type" und eine optionale "payload" property, der root reducer, also dein store, schaut dann wie der type aufgebaut ist, bzw. schaut auf den prefix des types, also den namen des slices und weißt dann auch wo das action object landen soll. Im richtigen slice wird dann die entsprechende reducer function ausgeführt, also der key name nach dem prefix ("modal/showModal")
+- Wenn du also in deiner Komponente die dispatch methode aufrufst, dann rufst du nicht die reducer function direkt auf, sondern du versendest ein action object an den redux store, das durch den action creator erstellt wird, dieses object hat eine "type" und eine optionale "payload" property, der root reducer, also dein store, schaut dann wie der type aufgebaut ist, bzw. schaut auf den prefix des types, also den namen des slices und weißt dann auch wo das action object landen soll. Im richtigen slice wird dann die entsprechende reducer function ausgeführt, also der key name nach dem prefix ("modal/showModal")
 
 - Action Creators geben also actions wieder und reducers handhaben diese actions.
 
@@ -115,22 +115,32 @@ const fetchRecipes = createAsyncThunk("recipes/fetchRecipes", async () => {
 })
 ```
 
-- Wenn wir den action creator "fetchRecipes()" dispatchen, werden drei action types versendet
+- Wenn wir den action creator "fetchRecipes()" dispatchen.
 
 ```js
 dispatch(fetchRecipes())
 ```
 
+- Wird zunächst der action type "pending" versendet.
+
 ```js
 {
   type: "recipes/fetchRecipes/pending"
 }
+```
 
+- Wenn der fetch call erfolgreich war, wird der action type "fulfilled" versendet.
+
+```js
 {
   type: "recipes/fetchRecipes/fulfilled",
   payload: recipes //Die recipes von /data.json
 }
+```
 
+- Wenn der fetch call fehlschlägt, wird der action type "rejected" versendet.
+
+```js
 {
   type: "recipes/fetchRecipes/rejected",
   error: {
@@ -138,3 +148,5 @@ dispatch(fetchRecipes())
   }
 }
 ```
+
+-
