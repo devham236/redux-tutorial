@@ -114,3 +114,27 @@ const fetchRecipes = createAsyncThunk("recipes/fetchRecipes", async () => {
   return recipes
 })
 ```
+
+- Wenn wir den action creator "fetchRecipes()" dispatchen, werden drei action types versendet
+
+```js
+dispatch(fetchRecipes())
+```
+
+```js
+{
+  type: "recipes/fetchRecipes/pending"
+}
+
+{
+  type: "recipes/fetchRecipes/fulfilled",
+  payload: recipes //Die recipes von /data.json
+}
+
+{
+  type: "recipes/fetchRecipes/rejected",
+  error: {
+    message: "Error message"
+  }
+}
+```

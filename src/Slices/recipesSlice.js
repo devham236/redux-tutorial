@@ -31,7 +31,5 @@ const recipesSlice = createSlice({
   },
 })
 
-console.log(recipesSlice)
-
 export const { alterArray } = recipesSlice.actions
 export default recipesSlice.reducer
