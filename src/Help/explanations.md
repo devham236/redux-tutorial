@@ -50,7 +50,7 @@ const modalSlice = createSlice({
 })
 ```
 
-## Reducers im Slice
+## Reducers und Actions
 
 - Reducers in einem slice sind functions die den state manipulieren können.
 - Ähnlich wie setter functions vom useState hook, kann man mit reducer functions den state verändern
@@ -149,7 +149,7 @@ dispatch(fetchRecipes())
 }
 ```
 
-- Für diese drei action types gibt es im slice redcuers die diese handhaben. Diese liegen aber in der extraReducers property.
+- Für diese drei action types gibt es im slice, redcuers die diese handhaben. Diese liegen aber in der extraReducers property.
 
 ```js
 const recipesSlice = createSlice({
@@ -182,3 +182,7 @@ const recipesSlice = createSlice({
   },
 })
 ```
+
+- Mit der extraReducers property können wir actions, die außerhalb des slices definiert wurden, handhaben. In unserem Fall wären es die actions die von der createAsyncThunk methode erstellt werden.
+- Wenn wir die "extraReducers" property verwenden, haben wir Zugang auf das "builder" object.
+- Darin können wir die "addCase" methode verwenden um einen action type zu handhaben.
