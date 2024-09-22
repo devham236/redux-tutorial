@@ -191,4 +191,4 @@ const recipesSlice = createSlice({
   Je nachdem wird entweder der fulfilled action type oder der rejected action type dispatched.
   Der reducer für fulfilled setzt die "data" property mit der "payload" property vom action object gleich, setzt loading auf "false" und setzt den error auf einen empty string.
   Der reducer für rejected setzt "loading" auf false und setzt die error property mit der error.message vom action object gleich.
-  Mit der "extraReducers" property können wir die weiteren action types die von "createAsyncThunk" handhaben, in dem man mit dem builder weitere "cases" bzw. reducers definiert.
+  Mit der "extraReducers" property können wir die weiteren action types, die von "createAsyncThunk" erstellt werden, handhaben, in dem man mit dem builder weitere "cases" bzw. reducers definiert.
