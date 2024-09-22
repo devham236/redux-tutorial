@@ -184,7 +184,7 @@ const recipesSlice = createSlice({
 ```
 
 - Mit der extraReducers property können wir actions, die außerhalb des slices definiert wurden, handhaben. In unserem Fall wären es die actions die von der createAsyncThunk methode erstellt werden.
-- Wenn wir die "extraReducers" property verwenden, haben wir Zugang auf das "builder" object.
+- Wenn wir die "extraReducers" property verwenden, haben wir Zugriff auf das "builder" object.
 - Darin können wir die "addCase" methode verwenden um einen action type zu handhaben.
 
 - Wenn wir also den fetchRecipes() thunk dispatchen, wird unmittelbar danach der pending action type versendet. Der reducer dafür setzt die loading property vom state auf "true". Währendessen wird die asynchrone operation ausgeführt, also die arrow function mit dem fetch call, um die recipes von der json datei zu fetchen. Während diesem fetch call, wartet die Applikation bis der Promise entweder fulfilled oder rejected wurde.
